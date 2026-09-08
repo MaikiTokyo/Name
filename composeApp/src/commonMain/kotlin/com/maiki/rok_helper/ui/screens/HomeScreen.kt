@@ -26,11 +26,12 @@ import com.maiki.rok_helper.util.ThousandsSeparatorTransformation
 import com.maiki.rok_helper.util.createSettings
 import com.maiki.rok_helper.util.openUrl
 import kotlinx.coroutines.launch
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(onNavigateToTool: (String) -> Unit) {
     val settings = remember { createSettings() }
     val json = remember { Json { ignoreUnknownKeys = true } }
     
@@ -76,7 +77,7 @@ fun HomeScreen() {
                     isIdSaved = true
                     val currentTime = 0L // TODO: System.currentTimeMillis() alternative
                     settings.putString("saved_player_id", id)
-                    settings.putString("cached_governor_data", json.encodeToString(GovernorData.serializer(), response.data))
+                    settings.putString("cached_governor_data", json.encodeToString(response.data))
                     if (isManualRefresh) {
                         settings.putLong("last_update_time_${id}", currentTime)
                         lastUpdateTime = currentTime
