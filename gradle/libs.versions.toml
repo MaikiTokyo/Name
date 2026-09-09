@@ -6,8 +6,10 @@ androidx-lifecycle = "2.8.3"
 androidx-navigation = "2.8.0-alpha10"
 ktor = "3.0.0"
 serialization = "1.7.1"
+kotlinx-datetime = "0.6.0"
 
 [libraries]
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
 ktor-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }

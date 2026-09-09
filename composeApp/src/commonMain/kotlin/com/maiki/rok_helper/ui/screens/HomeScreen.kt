@@ -26,6 +26,7 @@ import com.maiki.rok_helper.util.ThousandsSeparatorTransformation
 import com.maiki.rok_helper.util.createSettings
 import com.maiki.rok_helper.util.openUrl
 import kotlinx.coroutines.launch
+import kotlinx.datetime.Clock
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
@@ -75,7 +76,7 @@ fun HomeScreen(onNavigateToTool: (String) -> Unit) {
                 if (response.success && response.data != null) {
                     governorData = response.data
                     isIdSaved = true
-                    val currentTime = 0L // TODO: System.currentTimeMillis() alternative
+                    val currentTime = Clock.System.now().toEpochMilliseconds()
                     settings.putString("saved_player_id", id)
                     settings.putString("cached_governor_data", json.encodeToString(response.data))
                     if (isManualRefresh) {
