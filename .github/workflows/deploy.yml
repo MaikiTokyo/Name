@@ -26,7 +26,7 @@ jobs:
           cache: 'gradle'
 
       - name: Build with Gradle
-        run: bash ./gradlew :composeApp:wasmJsBrowserDistribution --stacktrace
+        run: ./gradlew :composeApp:wasmJsBrowserDistribution --info
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
